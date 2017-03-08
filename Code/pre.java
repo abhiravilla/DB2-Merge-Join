@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.io.LineNumberReader;
 
 public class pre {
-	int bb=1,cb=8,ab=6,db=4;
-	int bt=7,ct=8,at=10,dt=15;
+	
 	public static void main(String args[]){
+		int bb=1,cb=8,ab=6,db=4;
+		int bt=7,ct=8,at=10,dt=15;
+		join j=new join();
 	String account_ny[][]={
 			  {"116171599","bank_lin","56697"  },
 			  {"132303888","bank_wa","65438"  },
@@ -223,20 +225,7 @@ public class pre {
 			  {"877291400","bank_san","68928"  },
 			  {"979228874","bank_san","51978"  }
 			};
-	System.out.println(account_san[2][2]);
-	try{
-	File input=new File("C:/Users/abhir/Downloads/Compressed/account.txt");
-    LineNumberReader lr=new LineNumberReader(new FileReader(input));			
-    int lnumber=0;
-    String line="",out="";
-    String words[]={""};
-    int i=1;
-    while((line=lr.readLine())!=null){
-    }
-	
-	}
-	catch(Exception e){
-		System.out.println(e);
+			j.merge(customers_hou, depositor_oma, 0, 0, ct, dt,customers_hou.length,depositor_oma.length);
 	}
 }
-}
+
