@@ -1,8 +1,6 @@
 package merge_join;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.LineNumberReader;
+import java.util.Arrays;
 
 public class pre {
 	
@@ -75,7 +73,7 @@ public class pre {
 			  {"bank_wa","Washington","436743"  }
 			};
 	String customers_hou[][]={
-			  {"Akiko","Jepson","180 Hazy Shadow"  },
+			  {"Akiko Jepson","180 Hazy Shadow","New York"  },
 			  {"Alishia Sergi","2742 Distribution Way","New York"  },
 			  {"Andy Thompson","861 Sleepy Expressway","San Francisco"  },
 			  {"Angle Kok","267 Silent Oak Knoll","Boston"  },
@@ -225,7 +223,9 @@ public class pre {
 			  {"877291400","bank_san","68928"  },
 			  {"979228874","bank_san","51978"  }
 			};
-			j.merge(customers_hou, depositor_oma, 0, 0, ct, dt,customers_hou.length,depositor_oma.length);
+	
+	//		j.merge(customers_hou, depositor_oma, 0, 0, ct, dt,customers_hou.length,depositor_oma.length);
+	comparator cp=new comparator();
+	String[][] result=cp.compare(customers_hou,2);
 	}
 }
-
