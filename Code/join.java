@@ -22,9 +22,9 @@ public class join {
 				ocheck=1;
 				//checking if number of blocks is odd and number of tuples so far are twice the maximum for a block 
 				if(ob%2==1&&o%(2*ot)==0){
-						System.out.println("Getting next two blocks of outer relation");
+						System.err.println("Getting next two blocks of outer relation");
 					}
-				System.out.println("Block number  "+ob+" tuple number "+o+" outer relation");			
+				System.err.println("Block number  "+ob+" tuple number "+o+" outer relation");			
 			}		
 			//checking if blocks are even and if the block number is not printed
 			if(i%it==0&&icheck==0){
@@ -33,12 +33,11 @@ public class join {
 				icheck=1;
 				//checking if number of blocks is odd and number of tuples so far are twice the maximum for a block 
 				if(ib%2==1&&(i)%(it*2)==0){
-							System.out.println("Getting next two blocks of inner relation");
+							System.err.println("Getting next two blocks of inner relation");
 						}
-				System.out.println("Block number  "+ib+" tuple number "+i+" inner relation");		
+				System.err.println("Block number  "+ib+" tuple number "+i+" inner relation");		
 			}
 			if(outer[o][okey].compareToIgnoreCase(inner[i][ikey])==0){
-				System.out.println(outer[o][okey]);
 				output[j]=outer[o];
 				//Since the key value is same......we place it in the output block and move both relations to next tuples 
 				o++;
@@ -64,9 +63,9 @@ public class join {
 				System.out.println("Output block filled\n");
 				for(int k=0;k<5;k++){
 					for(int l=0;l<len;l++){
-						System.out.println(output[k][l]+"\t");
+						System.out.print(output[k][l]+"\t");
 					}
-					System.out.println("\n");
+					System.out.print("\n");
 				}
 				j=0;
 			}
@@ -75,12 +74,11 @@ public class join {
 			System.out.println("Join Completed\n");
 			for(int k=0;k<j;k++){
 				for(int l=0;l<len;l++){
-					System.out.println(output[k][l]+"\t");
+					System.out.print(output[k][l]+"\t");
 				}
-				System.out.println("\n");
+				System.out.print("\n");
 			}
 			j=0;
 		
 	  	}
 }
-
