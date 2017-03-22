@@ -35,12 +35,12 @@ public class merge_join {
 			 else if(los%ot*2==0){
 				 System.out.println("Getting the "+ob+" and "+(ob+1)+" of outer relation");
 				 ob=ob+2;
-				 join(create_array("O",los-1,(los+(2*ot-(los%2*ot)))),create_array("I",lis,(lis+(2*it-(lis%2*it)))));
+				 join(create_array("O",los,(los+(2*ot-(los%2*ot)))),create_array("I",lis,(lis+(2*it-(lis%2*it)))));
 			 }
 			 else{
 				 System.out.println("Getting the "+ib+" and "+(ib+1)+" of inner relation");
 				 ib=ib+2;
-				 join(create_array("O",los-1,(los+(2*ot-(los%2*ot)))),create_array("I",lis,(lis+(2*it-(lis%2*it)))));
+				 join(create_array("O",los,(los+(2*ot-(los%2*ot)))),create_array("I",lis,(lis+(2*it-(lis%2*it)))));
 			 }
 		 }
 		 System.out.println("Completed join class");
@@ -51,9 +51,12 @@ public class merge_join {
 			int os=outer.length,is=inner.length;
 			boolean done=false;
 			int o=0,i=0,j=0,si=0;
+			int lastnum=-1;
+			String key="";
 			while((is-i)!=0&&(os-o)!=0){
 				sub_array[si]=inner[i];
-				String key=sub_array[0][ikey];
+				lastnum=i;
+				key=sub_array[0][ikey];
 				System.out.println(key);
 				si++;
 				i++;
@@ -103,7 +106,29 @@ public class merge_join {
 				los++; 	
 				}
 				si=0;
-			}			
+			}		
+			if(is-i==0){
+				if(this.is==lis&&outer[o][okey].compareToIgnoreCase(key)>=0){
+					los--;
+					}
+					else if(this.is!=is){
+						los--;
+					}
+					else{
+						
+					}
+			}
+			if(os-o==0){
+				if(this.os==los&&outer[o][okey].compareToIgnoreCase(key)>=0){
+				lis=lastnum;
+				}
+				else if(this.os!=os){
+					lis=lastnum;
+				}
+				else{
+					
+				}
+			}
 			if(j!=0){
 				for(int k=0;k<j;k++){
 					for(int s=0;s<len+(len2-1);s++){
@@ -117,12 +142,17 @@ public class merge_join {
 	}
 	String[][] create_array(String s,int start,int ends){
 		int j=0;
-	//	System.out.println(start);
-		//System.out.println(ends);
+		String result[][];
 		if(s.compareTo("O")==0){
 			if(ends>os)
 				ends=os;
-			String result[][]=new String[(ends-start)][len];
+			if(ends==start){
+			    result=new String[1][len];
+				start-=1;
+			}
+			else{
+				 result=new String[(ends-start)][len];
+			}
 			for(int i=start;i<ends;i++){
 					result[j]=outer[i];
 					j++;
@@ -131,8 +161,14 @@ public class merge_join {
 		}
 		if(s.compareTo("I")==0){
 			if(ends>is)
-				ends=os;
-			String result[][]=new String[(ends-start)][len];
+				ends=is;
+			if(ends==start){
+			    result=new String[1][len];
+				start-=1;
+			}
+			else{
+				result=new String[(ends-start)][len];
+			}
 			for(int i=start;i<ends;i++){
 				result[j]=inner[i];
 					j++;
@@ -143,4 +179,5 @@ public class merge_join {
 	}
 		
 	}
+
 
