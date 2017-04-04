@@ -1,4 +1,3 @@
-package merge_join;
 
 public class join {
 	void merge(String outer[][],String inner[][],int okey,int ikey,int ot,int it,int os,int is){
