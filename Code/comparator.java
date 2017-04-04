@@ -1,4 +1,3 @@
-package merge_join;
 import java.util.Arrays;
 
 import java.util.List;
